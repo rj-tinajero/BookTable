@@ -1,0 +1,11 @@
+{
+  "name": "booktable",
+  "version": "1.0.0",
+  "description": "A store app for users to make purchases and for admin users to keep track of inventory in real time.",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "export NODE_ENV=test&& jasmine"
+  },
+  "author": "Richard Tinajero",
+  "license": "ISC"
+}

@@ -9,7 +9,7 @@ describe("routes : static", () => {
     it("should return status code 200 and say 'Book Table'", (done) => {
       request.get(base, (err, res, body) => {
         expect(res.statusCode).toBe(200);
-        expect(body).toContain("Book Table");
+        expect(body).toContain("Book Table: Shop for insightful books!");
         done();
       });
     });

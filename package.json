@@ -4,10 +4,11 @@
   "description": "A store app for users to make purchases and for admin users to keep track of inventory in real time.",
   "main": "src/server.js",
   "scripts": {
+    "app": "nodemon BookTable",
     "test": "export NODE_ENV=test&& jasmine",
-    "start": "node BookTable",
+    "start": "node src/server.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm start\" \"npm run client\""
+    "dev": "concurrently \"npm run app\" \"npm run client\""
   },
   "author": "Richard Tinajero",
   "license": "ISC",

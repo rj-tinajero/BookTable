@@ -7,6 +7,7 @@ module.exports = {
          callback(null, books);
       })
       .catch((err) => {
+         console.log(err, "err in query thing i added here");
          callback(err);
       })
    },

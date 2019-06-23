@@ -1,12 +1,24 @@
+import React from 'react';
+import Home from '../components/Home';
 const bookQueries = require("../db/queries.books");
 
 module.exports = {
    index(req, res, next) {
       bookQueries.getAllBooks((err, books) => {
          if(err) {
-            res.redirect(500, "static/index");
+            res.redirect(500, "/");
          } else {
             res.render("admin/books", {books});
+         }
+      })
+   },
+   store(req, res, next) {
+      bookQueries.getAllBooks((err, books) => {
+         if(err) {
+            console.log(err, "store controller err");
+            res.redirect(500, "/");
+         } else {
+            res.render("store", {books}, {component: Home});
          }
       })
    },

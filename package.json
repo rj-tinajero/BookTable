@@ -5,9 +5,10 @@
   "main": "src/server.js",
   "scripts": {
     "build": "webpack",
+    "serve": "node dist/server.js",
     "app": "nodemon BookTable",
     "test": "export NODE_ENV=test&& jasmine",
-    "start": "node src/server.js",
+    "start": "npm run build && npm run serve",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run app\" \"npm run client\""
   },
@@ -17,6 +18,7 @@
     "jasmine": "^3.0.0",
     "request": "^2.83.0",
     "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.2",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {

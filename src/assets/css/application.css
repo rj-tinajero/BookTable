@@ -5,3 +5,8 @@ body {
 .list-group-item {
    float: right;
 }
+
+.card-img-top {
+   width: 100px;
+   height: 150px;
+}

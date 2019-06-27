@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ./static/partials/head.ejs %>
+
+    <% include ./static/partials/baseScripts.ejs %>
+   
+    
+  </head>
+  <body class="container">
+
+      <!-- Navigation -->
+      <% include ./static/partials/navbar.ejs %>
+        
+      <section class="library row card-columns">
+        <% books.forEach((book) => { %>
+          <div class="card col-12 col-md-6 col-lg-4 mb-4 mt-4" style="width: 18rem;">
+            
+              <div class="row no-gutters">
+                <div class="col-md">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= book.title %></h5>
+                        <p class="card-text"><%= book.author %></p>
+                        <p class="card-text">$<%= book.price %></p>
+                      </div>
+                      <!-- <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                      </div> -->
+                </div>
+                <% if(book.cover) { %>  
+                  <div class="col-md-5">
+                    <img class="card-img-top" src="<%= book.cover %>" alt="Book cover for <%= book.title %>">
+                  </div>
+                <% } %>
+              </div>
+              <div class="card-footer">
+              
+                <form method="POST" id="addToCart" class="form-inline">
+                  <% if(book.inventory) { %> 
+                  <div class="form-group mx-sm-3 mb-2" >
+                      <label for="quantity">Qty:</label>
+                      <select class="custom-select mr-sm-2" style="width: 60px" name="quantity">
+                         <option selected>...</option>
+                         <% function allNumbers(num) { %>
+                          <% var range = []; %>
+                          <% for(var i = num; i > 0; i--) { %>
+                            <% if(i === num) { %>
+                              <% range.push(num) %>
+                            <% } else { %>
+                              <% range.push(i) %>
+                            <% } %>
+                          <% } %>
+                          <% return range.reverse(); %>
+                        <% } %>
+                        <% var quantity = allNumbers(book.inventory); %>
+                        <% quantity.forEach((qty) => { %>
+                          <option value="<%= qty %>"><%= qty %></option>
+                        <%  }) %>
+                      </select>
+                  </div>
+                  <% } %> 
+                  <% if(book.inventory) { %> 
+                  <div class="form-group mx-sm-3 mb-2" >
+                    <input type="submit" value="Add to Cart" class="btn btn-primary">
+                  </div>
+                  <% } else { %>
+                    <p>Out of Stock! Check back later</p>
+                  <% } %>
+                </form>
+                  
+              </div>
+            
+          </div>
+        <%  }) %>
+
+        
+              
+              
+      </section>
+
+      
+
+    </body>
+</html>

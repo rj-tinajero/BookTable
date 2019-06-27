@@ -10,12 +10,22 @@ module.exports = {
          }
       })
    },
+   store(req, res, next) {
+      bookQueries.getAllBooks((err, books) => {
+         if(err) {
+            console.log(err, "store controller err");
+            res.redirect(500, "/");
+         } else {
+            res.render("store", {books});
+         }
+      })
+   },
    update(req, res, next) {
       bookQueries.updateBook(req, req.body, (err, book) => {
          if(err || book == null) {
             res.redirect(404, "/");
          } else {
-            res.redirect("/admin/books")
+            res.redirect("/admin/books") 
          }
       })
    },

@@ -2,6 +2,7 @@ const request = require("request");
 const server = require("../../src/server");
 const base = "http://localhost:3000/admin/books";
 const base2 = "http://localhost:3000/admin";
+const base3 = "http://localhost:3000";
 const sequelize = require("../../src/db/models/index").sequelize;
 const Book = require("../../src/db/models").Book;
 
@@ -118,6 +119,16 @@ describe("routes : books", () => {
           expect(book.title).toBe("Course 301");
           done();
         });
+      });
+    });
+  });
+
+  describe("GET /store", () => {
+    it("should show a view of the store page", (done) => {
+      request.get(`${base3}/store`, (err, res, body) => {
+        expect(err).toBeNull();
+        expect(body).toContain("Course 101");
+        done();
       });
     });
   });

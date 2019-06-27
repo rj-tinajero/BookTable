@@ -13,7 +13,7 @@ module.exports = {
    },
    updateBook(req, updatedBook, callback) {
       return Book.findById(req.params.id)
-      .then((book) => { console.log(book, req.params.id);
+      .then((book) => { 
          book.update(updatedBook, {
             fields: Object.keys(updatedBook)
          })

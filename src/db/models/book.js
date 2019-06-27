@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
     inventory: {
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    cover: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   }, {});
   Book.associate = function(models) {
